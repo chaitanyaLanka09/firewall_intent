@@ -1,0 +1,9 @@
+node_modules/
+.env
+dist/
+.DS_Store
+build/
+*.log
+android-prototype/build/
+android-prototype/app/build/
+android-prototype/.idea/
