@@ -14,7 +14,15 @@ const app = express();
 // Middleware
 app.use(express.json());
 const corsOptions = {
-  origin: process.env.FRONTEND_URL || 'http://localhost:5173',
+  origin: function (origin, callback) {
+    const allowedOrigins = (process.env.FRONTEND_URL || 'http://localhost:5173').split(',');
+    // Allow localhost, exact matches from FRONTEND_URL, or any Vercel preview deployment
+    if (!origin || allowedOrigins.includes(origin) || origin.endsWith('.vercel.app')) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   optionsSuccessStatus: 200
 };
 app.use(cors(corsOptions));
