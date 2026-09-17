@@ -121,26 +121,26 @@ export default function Dashboard() {
     <div className="max-w-[1440px] mx-auto p-4 md:p-6 lg:p-6 space-y-5 animate-in fade-in duration-700 pb-12">
       
       {/* Security Simulation Bar */}
-      <div className="flex items-center justify-between bg-surface/50 border border-borderSubtle p-4 rounded-lg">
+      <div className="flex flex-col md:flex-row items-start md:items-center justify-between bg-surface/50 border border-borderSubtle p-4 rounded-lg gap-4">
         <div className="flex items-center gap-3">
-          <Target className="w-5 h-5 text-textSecondary" />
+          <Target className="w-5 h-5 text-textSecondary shrink-0" />
           <div>
             <div className="text-[13px] font-bold text-textPrimary uppercase tracking-wide">Test Firewall</div>
             <div className="text-[11px] text-textSecondary mt-0.5">Simulate a permission request</div>
           </div>
         </div>
-        <div className="flex gap-3">
+        <div className="flex gap-3 w-full md:w-auto">
           <button 
             onClick={runSafe} 
             disabled={isInjecting}
-            className="text-[11px] font-bold px-6 py-2.5 bg-white/5 border border-white/10 rounded hover:bg-white/10 transition-colors text-white uppercase tracking-widest disabled:opacity-50"
+            className="flex-1 md:flex-none text-[11px] font-bold px-4 md:px-6 py-2.5 bg-white/5 border border-white/10 rounded hover:bg-white/10 transition-colors text-white uppercase tracking-widest disabled:opacity-50 text-center"
           >
             [ Safe Test ]
           </button>
           <button 
             onClick={runSuspicious} 
             disabled={isInjecting}
-            className="text-[11px] font-bold px-6 py-2.5 bg-block/10 border border-block/30 rounded hover:bg-block/20 hover:border-block/50 text-block transition-colors uppercase tracking-widest disabled:opacity-50 shadow-[0_0_15px_rgba(239,68,68,0.1)]"
+            className="flex-1 md:flex-none text-[11px] font-bold px-4 md:px-6 py-2.5 bg-block/10 border border-block/30 rounded hover:bg-block/20 hover:border-block/50 text-block transition-colors uppercase tracking-widest disabled:opacity-50 shadow-[0_0_15px_rgba(239,68,68,0.1)] text-center"
           >
             [ Threat Test ]
           </button>
@@ -180,15 +180,15 @@ export default function Dashboard() {
             </div>
           </div>
           
-          <div className="shrink-0 flex items-center justify-center pl-0 md:pl-16">
+          <div className="shrink-0 flex items-center justify-center pl-0 md:pl-16 w-full md:w-auto mt-8 md:mt-0">
             <RadialProgress percentage={safetyPercentage} colorClass={safetyColor} statusText={hasThreats ? 'AT RISK' : 'SECURE'} />
           </div>
         </div>
       </div>
 
       {/* System Signal Strip */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 bg-surface/50 border border-borderSubtle p-4 rounded-lg">
-        <div className="flex items-center gap-4 px-4 border-r border-borderSubtle/50">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 bg-surface/50 border border-borderSubtle p-4 rounded-lg">
+        <div className="flex items-center gap-4 px-4 sm:border-r border-borderSubtle/50 pb-4 sm:pb-0 border-b sm:border-b-0">
           <Cpu className="w-5 h-5 text-textSecondary opacity-70" />
           <div className="flex-1">
             <div className="flex justify-between items-center mb-1.5">
@@ -200,8 +200,8 @@ export default function Dashboard() {
             </div>
           </div>
         </div>
-        <div className="flex items-center gap-4 px-4 border-r-0 md:border-r border-borderSubtle/50">
-          <Network className="w-5 h-5 text-textSecondary opacity-70" />
+        <div className="flex items-center gap-4 px-4 md:border-r border-borderSubtle/50 pb-4 md:pb-0 border-b md:border-b-0">
+          <Network className="w-5 h-5 text-textSecondary opacity-70 shrink-0" />
           <div className="flex-1">
             <div className="flex justify-between items-center mb-1.5">
               <span className="text-[10px] font-mono text-textSecondary uppercase tracking-widest">Network</span>
@@ -212,8 +212,8 @@ export default function Dashboard() {
             </div>
           </div>
         </div>
-        <div className="flex items-center gap-4 px-4 border-r border-borderSubtle/50">
-          <Battery className="w-5 h-5 text-textSecondary opacity-70" />
+        <div className="flex items-center gap-4 px-4 sm:border-r border-borderSubtle/50 pb-4 sm:pb-0 border-b sm:border-b-0">
+          <Battery className="w-5 h-5 text-textSecondary opacity-70 shrink-0" />
           <div className="flex-1">
             <div className="flex justify-between items-center mb-1.5">
               <span className="text-[10px] font-mono text-textSecondary uppercase tracking-widest">Battery</span>
@@ -225,7 +225,7 @@ export default function Dashboard() {
           </div>
         </div>
         <div className="flex items-center gap-4 px-4">
-          <ShieldCheck className="w-5 h-5 text-textSecondary opacity-70" />
+          <ShieldCheck className="w-5 h-5 text-textSecondary opacity-70 shrink-0" />
           <div className="flex-1">
              <div className="text-[10px] font-mono text-textSecondary uppercase tracking-widest mb-0.5">Protected Apps</div>
              <div className="text-[15px] font-bold text-white">{data?.totalApps || 0} Active</div>
@@ -237,12 +237,12 @@ export default function Dashboard() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         
         {/* Left Column: Live Protection Timeline */}
-        <div className="flex flex-col h-[460px]">
+        <div className="flex flex-col h-[400px] md:h-[460px] w-full">
           <h3 className="text-[14px] uppercase tracking-wider text-textPrimary font-bold mb-4 flex items-center gap-2">
-            <Clock className="w-4 h-4 text-textSecondary" /> Live Protection
+            <Clock className="w-4 h-4 text-textSecondary shrink-0" /> Live Protection
           </h3>
           
-          <div className="bg-surface border border-borderSubtle rounded-lg flex-1 overflow-y-auto relative p-5 custom-scrollbar">
+          <div className="bg-surface border border-borderSubtle rounded-lg flex-1 overflow-y-auto relative p-4 md:p-5 custom-scrollbar">
             {data?.recentActivity?.length > 0 && (
               <div className="absolute left-[39px] top-8 bottom-6 w-[2px] bg-borderSubtle/30"></div>
             )}
@@ -302,12 +302,12 @@ export default function Dashboard() {
         </div>
 
         {/* Right Column: Permission Intelligence */}
-        <div className="flex flex-col h-[460px]">
+        <div className="flex flex-col h-[400px] md:h-[460px] w-full">
           <h3 className="text-[14px] uppercase tracking-wider text-textPrimary font-bold mb-4 flex items-center gap-2">
-            <BrainCircuit className="w-4 h-4 text-[#3b82f6]" /> Permission Intelligence
+            <BrainCircuit className="w-4 h-4 text-[#3b82f6] shrink-0" /> Permission Intelligence
           </h3>
           
-          <div className="bg-surface border border-borderSubtle rounded-lg flex-1 p-5 flex flex-col relative overflow-hidden">
+          <div className="bg-surface border border-borderSubtle rounded-lg flex-1 p-4 md:p-5 flex flex-col relative overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#3b82f6]/50 to-transparent"></div>
             
             {!selectedEvent ? (
@@ -369,18 +369,18 @@ export default function Dashboard() {
                   )}
                 </div>
                 
-                <div className="flex gap-4 pt-3 border-t border-borderSubtle/50 mt-auto">
-                  <div className="flex-1 p-4 bg-background border border-borderSubtle rounded-lg flex flex-col items-center justify-center">
+                <div className="flex flex-col sm:flex-row gap-4 pt-3 border-t border-borderSubtle/50 mt-auto">
+                  <div className="flex-1 p-3 md:p-4 bg-background border border-borderSubtle rounded-lg flex flex-col items-center justify-center">
                     <div className="text-[10px] font-mono text-textSecondary uppercase tracking-widest mb-1.5">Risk Score</div>
-                    <div className={`text-[32px] font-bold font-mono leading-none ${selectedEvent.recommendation === 'BLOCK' ? 'text-block' : selectedEvent.recommendation === 'ASK' ? 'text-ask' : 'text-allow'}`}>
+                    <div className={`text-[28px] md:text-[32px] font-bold font-mono leading-none ${selectedEvent.recommendation === 'BLOCK' ? 'text-block' : selectedEvent.recommendation === 'ASK' ? 'text-ask' : 'text-allow'}`}>
                       {selectedEvent.riskScore || (selectedEvent.recommendation === 'BLOCK' ? 75 : selectedEvent.recommendation === 'ASK' ? 45 : 12)}
                     </div>
                   </div>
-                  <div className={`flex-1 p-4 rounded-lg border flex flex-col items-center justify-center ${selectedEvent.recommendation === 'BLOCK' ? 'bg-block/10 border-block/30' : selectedEvent.recommendation === 'ASK' ? 'bg-ask/10 border-ask/30' : 'bg-allow/10 border-allow/30'}`}>
+                  <div className={`flex-1 p-3 md:p-4 rounded-lg border flex flex-col items-center justify-center ${selectedEvent.recommendation === 'BLOCK' ? 'bg-block/10 border-block/30' : selectedEvent.recommendation === 'ASK' ? 'bg-ask/10 border-ask/30' : 'bg-allow/10 border-allow/30'}`}>
                     <div className={`text-[10px] font-mono uppercase tracking-widest mb-1.5 ${selectedEvent.recommendation === 'BLOCK' ? 'text-block' : selectedEvent.recommendation === 'ASK' ? 'text-ask' : 'text-allow'}`}>
                       Decision
                     </div>
-                    <div className={`text-[24px] font-bold uppercase tracking-tight ${selectedEvent.recommendation === 'BLOCK' ? 'text-block' : selectedEvent.recommendation === 'ASK' ? 'text-ask' : 'text-allow'}`}>
+                    <div className={`text-[20px] md:text-[24px] font-bold uppercase tracking-tight ${selectedEvent.recommendation === 'BLOCK' ? 'text-block' : selectedEvent.recommendation === 'ASK' ? 'text-ask' : 'text-allow'}`}>
                       {selectedEvent.recommendation}
                     </div>
                   </div>
