@@ -5,7 +5,7 @@ const BlackBoxEvent = require('../models/BlackBoxEvent');
 const axios = require('axios');
 
 const runAnalysis = async (req, appId, permission, context) => {
-  const url = `http://localhost:${process.env.PORT || 5000}/api/analysis/analyze`;
+  const url = `http://127.0.0.1:${process.env.PORT || 5000}/api/analysis/analyze`;
   const response = await axios.post(url, { appId, permission, context });
   return response.data;
 };

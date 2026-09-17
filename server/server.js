@@ -7,7 +7,32 @@ const connectDB = require('./config/db');
 dotenv.config();
 
 // Connect to database
-connectDB();
+connectDB().then(async () => {
+  const App = require('./models/App');
+  const count = await App.countDocuments();
+  if (count === 0) {
+    console.log("Database is empty. Populating with seed data...");
+    const seedApps = [
+      {
+        name: 'Calculator', packageName: 'com.demo.calculator', category: 'Utility', normalPermissions: [],
+        permissionUsage: { CAMERA: 0, MICROPHONE: 0, LOCATION: 0, CONTACTS: 0, FILES: 0 },
+        baselineBehavior: { backgroundActivity: 'LOW', networkActivity: 'LOW', cpuActivity: 'LOW', batteryActivity: 'LOW' }
+      },
+      {
+        name: 'Camera', packageName: 'com.demo.camera', category: 'Photography', normalPermissions: ['CAMERA'],
+        permissionUsage: { CAMERA: 25, MICROPHONE: 2, LOCATION: 5, CONTACTS: 0, FILES: 10 },
+        baselineBehavior: { backgroundActivity: 'LOW', networkActivity: 'NORMAL', cpuActivity: 'NORMAL', batteryActivity: 'NORMAL' }
+      },
+      {
+        name: 'Notes', packageName: 'com.demo.notes', category: 'Productivity', normalPermissions: ['FILES'],
+        permissionUsage: { CAMERA: 0, MICROPHONE: 2, LOCATION: 0, CONTACTS: 0, FILES: 15 },
+        baselineBehavior: { backgroundActivity: 'LOW', networkActivity: 'LOW', cpuActivity: 'NORMAL', batteryActivity: 'NORMAL' }
+      }
+    ];
+    await App.insertMany(seedApps);
+    console.log("Seed data successfully populated.");
+  }
+});
 
 const app = express();
 
