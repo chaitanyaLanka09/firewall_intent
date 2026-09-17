@@ -149,7 +149,7 @@ export default function Dashboard() {
 
       {/* Hero Section */}
       <div className="bg-surface relative overflow-hidden rounded-xl">
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none opacity-50"></div>
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.05)_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none opacity-50"></div>
         <div className="absolute inset-0 bg-gradient-to-r from-surface via-transparent to-surface pointer-events-none"></div>
         
         <div className="p-6 md:p-8 flex flex-col md:flex-row items-center justify-between w-full relative z-10">

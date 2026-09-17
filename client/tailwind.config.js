@@ -7,15 +7,17 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: '#09090b', // Near black
-        surface: '#18181b', // Graphite
-        surfaceHighlight: '#27272a',
-        borderSubtle: '#3f3f46',
-        textPrimary: '#f4f4f5',
-        textSecondary: '#a1a1aa',
-        allow: '#10b981', // Emerald
-        ask: '#f59e0b', // Amber
-        block: '#ef4444', // Crimson
+        background: '#ffffff', // White
+        surface: '#f4f4f5', // Very light gray (zinc-100)
+        surfaceHighlight: '#e4e4e7', // zinc-200
+        borderSubtle: '#d4d4d8', // zinc-300
+        textPrimary: '#09090b', // Dark gray/black
+        textSecondary: '#52525b', // Medium gray
+        allow: '#10b981',
+        ask: '#f59e0b',
+        block: '#ef4444',
+        white: '#000000', // Invert white utilities to black
+        black: '#ffffff', // Invert black utilities to white
       },
       fontFamily: {
         sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
